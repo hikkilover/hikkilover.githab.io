@@ -6,18 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hikkilover&#39;s Blog</title>
+  <title>Meta-Learning Post | Hikkilover&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="A Blog Built on Hexo">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hikkilover&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="1 Meta-Learning 概述&amp;emsp; 1.1 Meta-Learning 定义Meta-Learning（元学习）也称 Learning to learn（学会学习），其概念并不复杂。《Mata-SGD》一文中，对元学习作出了这样的界定：  Meta-learning learns from many related tasks a meta-learner that can lear">
+<meta name="keywords" content="Deep Learning,Meta Learning,Survey">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Meta-Learning Post">
+<meta property="og:url" content="http://yoursite.com/2019/04/25/MetaLearning-Post/index.html">
 <meta property="og:site_name" content="Hikkilover&#39;s Blog">
-<meta property="og:description" content="A Blog Built on Hexo">
+<meta property="og:description" content="1 Meta-Learning 概述&amp;emsp; 1.1 Meta-Learning 定义Meta-Learning（元学习）也称 Learning to learn（学会学习），其概念并不复杂。《Mata-SGD》一文中，对元学习作出了这样的界定：  Meta-learning learns from many related tasks a meta-learner that can lear">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/pipeline.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/符号定义1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/符号定义2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/regression.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/2D_navigation.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/MAML.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/MAML_explain.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/Meta-SGD.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/ADML.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/Gradient%20Agreement.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/PMN.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/CACTUs.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/DEML.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/TAML.jpg">
+<meta property="og:updated_time" content="2019-04-25T11:06:44.786Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hikkilover&#39;s Blog">
-<meta name="twitter:description" content="A Blog Built on Hexo">
+<meta name="twitter:title" content="Meta-Learning Post">
+<meta name="twitter:description" content="1 Meta-Learning 概述&amp;emsp; 1.1 Meta-Learning 定义Meta-Learning（元学习）也称 Learning to learn（学会学习），其概念并不复杂。《Mata-SGD》一文中，对元学习作出了这样的界定：  Meta-learning learns from many related tasks a meta-learner that can lear">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/25/MetaLearning-Post/pipeline.png">
   
     <link rel="alternative" href="/atom.xml" title="Hikkilover&#39;s Blog" type="application/atom+xml">
   
@@ -141,16 +158,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-MetaLearning-Post" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-MetaLearning-Post" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/25/MetaLearning-Post/">Meta-Learning Post</a>
+    <h1 class="article-title" itemprop="name">
+      Meta-Learning Post
     </h1>
   
 
@@ -167,12 +182,93 @@
 <blockquote>
 <p>Meta-learning learns from many related tasks a meta-learner that can learn a new task more <strong>accurately</strong> and <strong>faster</strong> with <strong>fewer examples</strong>.<br>“ 元学习是指：结合大量相关任务，训练得到一个元学习器，该学习器可以借助少量样本迅速而准确地适应新任务。</p>
 </blockquote>
-<p>这段话从元学习器的角度定义了 Meta-Learning，除此之外，还有其他的视角，比如从模型参数的角度出发（忘记具体是哪一篇论文），元学习的目的是为当前模型寻找最优的初始化参数，在其基础上，模型只需要参照极少量样本，做数轮参数更新，就可以在新任务上获得较好的效果。<br></p>
-        
-          <a class="article-more-a" href="/2019/04/25/MetaLearning-Post/#more">more >></a>
-        
+<p>这段话从元学习器的角度定义了 Meta-Learning，除此之外，还有其他的视角，比如从模型参数的角度出发（忘记具体是哪一篇论文），元学习的目的是为当前模型寻找最优的初始化参数，在其基础上，模型只需要参照极少量样本，做数轮参数更新，就可以在新任务上获得较好的效果。<br><a id="more"></a></p>
+<h5 id="emsp-1-2-Meta-Learning-Pipeline"><a href="#emsp-1-2-Meta-Learning-Pipeline" class="headerlink" title="&emsp; 1.2 Meta-Learning Pipeline"></a>&emsp; 1.2 Meta-Learning Pipeline</h5><p>元学习的Pipeline相对稳定，我们用图示来展示：</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/pipeline.png" width="90%" height="90%"></div></p>
+<h5 id="emsp-1-3-Meta-Learning-符号定义"><a href="#emsp-1-3-Meta-Learning-符号定义" class="headerlink" title="&emsp; 1.3 Meta-Learning 符号定义"></a>&emsp; 1.3 Meta-Learning 符号定义</h5><p>在元学习的研究过程中，Chelsea Finn 等人（OpenAI）的<a href="https://arxiv.org/abs/1703.03400" target="_blank" rel="noopener">《Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks（MAML）》</a>一文算是一个收束节点，之前的相关研究基本没有再延续下去（我也没看），而之后的研究大多都是沿用此文的符号定义和实验设计，并将其方法引为重要参照。原文中介绍得比较详细，我们直接截取其中的段落，不再赘述。</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/符号定义1.jpg" width="50%" height="50%"></div></p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/符号定义2.jpg" width="50%" height="50%"></div></p>
+<p>这些符号给出了元学习过程的数学描述，这是一个很完备的表达，时序和非时序的任务都被涵盖进去。</p>
+<hr>
+<h3 id="2-Meta-Learning-的经典用例"><a href="#2-Meta-Learning-的经典用例" class="headerlink" title="2 Meta-Learning 的经典用例"></a>2 Meta-Learning 的经典用例</h3><p>MAML一文中，作者为了验证所提出的的元学习算法，设计了三项实验，分别是回归（Regression），图像分类（Image Classification）以及平面导航（2D Navigation）。这三类实验的设计很经典，后续有关 Meta-Learning 算法的研究基本全部沿用此实验方法。</p>
+<h5 id="emsp-2-1-回归与二分类"><a href="#emsp-2-1-回归与二分类" class="headerlink" title="&emsp; 2.1 回归与二分类"></a>&emsp; 2.1 回归与二分类</h5><p>回归任务，即给定一条曲线上的 k 个采样点（k-shot），让模型能够拟合回归出这条曲线。此时模型的输入和输出都只有一个浮点数。在 Finn 的实验中，模型选用单隐层BP神经网络，拟合的曲线是正余弦曲线（在Meta-Training的过程中，所有相关任务也都是对正余弦曲线的回归）。最终的实验结果形如：</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/regression.jpg" width="70%" height="70%"></div></p>
+<p>回归是一种较为迅速且灵活的实验方式，但由于太过简单，后续许多研究都不再介绍此类实验。但这也不妨碍它成为我们验证方法有效性的一种方式。<br>除曲线回归之外，平面点二分类也可以用作一种验证手段。</p>
+<h5 id="emsp-2-2-图像分类"><a href="#emsp-2-2-图像分类" class="headerlink" title="&emsp; 2.2 图像分类"></a>&emsp; 2.2 图像分类</h5><p>用图像分类做验证实验时，会事先规定模型是用于几分类（N-way），以及每个新类别有多少样本（k-shot）。Finn的实验中，用的是四个卷积层加全连接的网络结构。<br>图像分类是目前出现频率最高的一种实验手段，一般用Omniglot（一个字符数据集）和miniImageNet做两个数据集，前者的准确率基本达到了99%以上，后者的SOA还停留在70%左右。</p>
+<h5 id="emsp-2-3-强化学习"><a href="#emsp-2-3-强化学习" class="headerlink" title="&emsp; 2.3 强化学习"></a>&emsp; 2.3 强化学习</h5><p>与前面两者不同，平面导航任务需要模型完成一个时序的任务，这已经属于强化学习的范畴，而且也是一个专门和机器人领域对接的任务。在一个Task中，网络需要从一个确定的起始点，通过多步决策，走到终点。不同的样本有不同的路径。下图是MAML中的结果展示：</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/2D_navigation.jpg" width="90%" height="90%"></div></p>
+<p>图例中3-steps是指，模型在adaption阶段仅仅进行了三轮参数更新，从这里也可以看出 Meta-Learning 适应新任务的速度是很快的。</p>
+<hr>
+<h3 id="3-Meat-Learning-优化器"><a href="#3-Meat-Learning-优化器" class="headerlink" title="3 Meat-Learning 优化器"></a>3 Meat-Learning 优化器</h3><h5 id="emsp-3-1-界定：元学习优化器"><a href="#emsp-3-1-界定：元学习优化器" class="headerlink" title="&emsp; 3.1 界定：元学习优化器"></a>&emsp; 3.1 界定：元学习优化器</h5><p>元学习优化器（Meta-Learning Optimizer）这个概念其实并不见于各篇论文，而是我自己为以下所有 Methods 作的概念划分。不同的论文，不同的作者，对他们的 Methods 有自己的定义，一些人称其为算法 （Algorithm），另一些人则称其为框架（Framework），但我认为，将它们划入优化器（Like SGD and Adam）的范畴更妥当，原因如下：</p>
+<ul>
+<li>所有 Methods 都是 Model-Agnostic 的，即不涉及对模型本身的任何规定。</li>
+<li>所有 Methods 关注的都是梯度更新的规则，这和一般训练过程中的优化器是相同的。<h5 id="emsp-3-2-MAML"><a href="#emsp-3-2-MAML" class="headerlink" title="&emsp; 3.2 MAML"></a>&emsp; 3.2 MAML</h5><a href="https://arxiv.org/abs/1703.03400" target="_blank" rel="noopener">MAML</a> 是 OpenAI 实验室 Chelsea ，Pieter 以及 Sergey 三位大佬于2017年（ICML）提出的。如前所述，这一算法是 Meta-Learning 历史上的里程碑，之前的各类方法至此为止，而之后的研究基本全部围绕其展开。<br>这是一篇很短的论文（正文双栏八页），但它拎清楚很多问题，包括元学习的定义，Pipeline，数学描述，基本算法等。MAML的算法如下所示：</li>
+</ul>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/MAML.jpg" width="60%" height="60%"></div></p>
+<p>这个算法的关键点在于第八行——参数更新时并不依照参数的当前状态，而是参数的下一个状态，原文的解释是这样的：</p>
+<blockquote>
+<p>In effect, our proposed method aims to optimize the model parameters such that one or a small number of gradient steps on a new task will produce maximally effective behavior on that task.<br>我们这样设计的原因是：让模型的参数能够能够在一步或几步之内适应新任务。</p>
+</blockquote>
+<p>我对这个过程的理解如下图：</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/MAML_explain.png" width="60%" height="60%"></div></p>
+<p>所有的训练过程的原则无非是：我希望模型最终行为是什么样的，就朝着目标的方向约束模型。元学习过程的最终目标是：模型在新任务上进行一步或几步训练之后，就可以应对新任务，获得较好的效果。原模型即对应上图的state1，Adaption之后的模型对应 Visual State，我们之所以不优化黄色的Loss，而选择把红色Loss优化到0，其实正是在模拟Adaption的过程，可想而知是，如果红色的Loss被优化到零，那么我们就已经实现了“一步到位”。<br>MAML 框定了 元学习优化器的大框架，之后的工作其实基本都是在其上做加法。<br><strong>P.S.</strong> 上面的第一个算法步骤没有展示出 Meta-training 中 train-batch 和 test-batch 的不同，但实际上是有的，集第六步和第八步用的数据虽然在 Task 上一一对应，但确实不同的数据。这一用法在MAML里就已经确定了。</p>
+<h5 id="emsp-3-3-Meta-SGD"><a href="#emsp-3-3-Meta-SGD" class="headerlink" title="&emsp; 3.3 Meta-SGD"></a>&emsp; 3.3 Meta-SGD</h5><p><a href="https://arxiv.org/abs/1707.09835" target="_blank" rel="noopener">Meta-SGD</a> 是 华为 2017年发布的 MAML 的改进版，它的核心 idea 是为模型中每一个参数配备一个learnable 的学习率 alpha。</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/Meta-SGD.jpg" width="90%" height="90%"></div></p>
+<p>Meta-SGD的出发点是想从 Meta-Training 的过程中获取更多的 Prior，作者认为每个参数的更新量是一项比较有用的 Prior。（那些训练过程中步子迈得总是比较大的参数，就让它更剧烈地变化。）之后的许多改进，其最初的动机也大抵如此。</p>
+<h5 id="emsp-3-4-ADML"><a href="#emsp-3-4-ADML" class="headerlink" title="&emsp; 3.4 ADML"></a>&emsp; 3.4 ADML</h5><p><a href="https://arxiv.org/abs/1806.03316" target="_blank" rel="noopener">ADML</a> 全称 Adversarial Meta-Learning。2018年中发布在arXiv上，至今还没有正式发表，也没啥引用，除了文章中的数学解释比较薄弱，还有就是指标上没有太大的优势。</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/ADML.jpg" width="90%" height="90%"></div></p>
+<p>这是一项典型的移花接木式的工作，参考的是 GoodFellow 在14年，17年的两篇研究（<a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener">FGSM</a> 和 <a href="https://arxiv.org/abs/1611.01236" target="_blank" rel="noopener">AD-training</a>），统称为称为Adversarial training ，此处的对抗和之后GANs中的对抗不是一码事。GF在这里提出的其实是一种高级的数据增强的手段，他提出一种方法，可以稳定地生成难例（一般的添加噪声的方法尽管能一定程度上改变输入数据的分布，但却不见得能稳定地生成难例），将这些难例添加进训练集中，能一定程度上提高模型的泛化性能。<br>GF的这项研究似乎也开始被follow了，其实还是值得一用的，在写论文时，不妨将其作为一个创新点。</p>
+<h5 id="emsp-3-5-Gradient-Agreement"><a href="#emsp-3-5-Gradient-Agreement" class="headerlink" title="&emsp; 3.5 Gradient Agreement"></a>&emsp; 3.5 Gradient Agreement</h5><p><a href="https://arxiv.org/abs/1810.08178v1" target="_blank" rel="noopener">Gradient Agreement</a> 虽然名字上和上面的几个看起来不太像，但这个方法仍然是基于MAML的改进，这篇文章发布于2018年年末，其 story 的核心在于 “Agreement” ，Agreement是一个训练 Batch 中的各类 Task 之间的Agreement，做法也很简单，根据每个 Task 在 training 阶段的参数更新量，来计算一个权值（更新量越大，权值越高），之后 testing 阶段，所有 Task 产生的总 Loss 是用加权和计算。</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/Gradient Agreement.jpg" width="90%" height="90%"></div></p>
+<h5 id="emsp-3-6-其他"><a href="#emsp-3-6-其他" class="headerlink" title="&emsp; 3.6 其他"></a>&emsp; 3.6 其他</h5><p>除了上面的这些优化器之外，同时期还有许多类似的方法，但好像受到的关注比较少，比如 <a href="https://arxiv.org/abs/1606.04474" target="_blank" rel="noopener">Meta-LSTM</a>，<a href="https://arxiv.org/abs/1803.02999" target="_blank" rel="noopener">Reptile（from OpenAI）</a>，这一部分我也没有看。</p>
+<hr>
+<h3 id="4-图像分类元学习的经典研究"><a href="#4-图像分类元学习的经典研究" class="headerlink" title="4 图像分类元学习的经典研究"></a>4 图像分类元学习的经典研究</h3><p>下面介绍两项应用元学习机制做图像分类的经典研究： Prototypical Network以及PMN，后续许多研究，基本也是和它们（特别是前者）做比较。</p>
+<h5 id="emsp-4-1-Prototypical-Netork"><a href="#emsp-4-1-Prototypical-Netork" class="headerlink" title="&emsp; 4.1 Prototypical Netork"></a>&emsp; 4.1 Prototypical Netork</h5><p><a href="https://arxiv.org/abs/1703.05175" target="_blank" rel="noopener">Prototypical Network</a> 可能是第一篇专门用Meta-Learning解决图像分类的研究，虽然之前还有Matching Network，但后者并没有使用 Meta-Learning 的方法，而是走了一种表示学习的路线。这二者何以不同呢？我认为最重要的差别在于， 在 Adaption 阶段，用于提取 embedding 的模型是否更新。元学习方法会要求参数更新，而表示学习方法则不然，后者只是通过 “记住” 新类的特征表示来学习新任务。<br>Prototypical 意即 “原型”，在 Meta-Training 时，算法会计算每个Task中的每个类的 embedding “类中心” ，通过训练，让同类对象的 embedding 向中心靠拢。Adaption 时，没有“类中心”的概念，就是一个正常的训练，最后测试时，使用近邻算法找到最匹配的标签。</p>
+<h5 id="emsp-4-2-PMN"><a href="#emsp-4-2-PMN" class="headerlink" title="&emsp; 4.2 PMN"></a>&emsp; 4.2 PMN</h5><p><a href="https://arxiv.org/abs/1801.05401" target="_blank" rel="noopener">PMN</a> 全称 Prototype Matching Network，它将 Prototypical Net 和 Matching Net 的的机制糅合在了一起。（PN的Idea如前述，MN的核心是用双向LSTM和带注意力的LSTM对embedding做进一步的变换。）但这也并非它最主要的创新点，其核心 Idea 是引入了一个生成网络拓展训练数据。</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/PMN.jpg" width="70%" height="70%"></div></p>
+<p>这幅图非常清晰地展示了网络的结构。图中红色虚线代表的是反向传播的路径，可以看到，生成器在Meta-Training阶段与分类器同时训练。有一点必须说明，生成器的输入（S_train）并非是完整的图像，而是已经被CNN编码过的 embedding，生成结果与之保持同形。</p>
+<hr>
+<h3 id="5-Meta-Learning-前沿"><a href="#5-Meta-Learning-前沿" class="headerlink" title="5 Meta-Learning 前沿"></a>5 Meta-Learning 前沿</h3><p>下面是一些最新发布的关于 Meta-Learning 的文章，算是这个领域的前沿吧，这里简单地列一下它们的Idea。</p>
+<h5 id="emsp-5-1-无监督元学习-CACTUs"><a href="#emsp-5-1-无监督元学习-CACTUs" class="headerlink" title="&emsp; 5.1 无监督元学习 CACTUs"></a>&emsp; 5.1 无监督元学习 CACTUs</h5><p><a href="https://arxiv.org/abs/1810.02334?context=stat.ML" target="_blank" rel="noopener">CACTUs</a> 是这篇论文中所用算法的简称，论文探讨了如何用无标签的数据进行 Meta-Training ，实验形式依然是图像分类。（之所以要引入无监督概念，一来是实际情况使然，数据并不总有标签，二来也和元学习图像分类的任务特性有关 —— 实际上模型不是在千方百计地搜寻高判别性特征，只是在学习怎么样把少数几类对象“划分开”。）<br>这篇论文的做法是，先将所有训练图像转为 embeddings，再用 K-means 聚类算法进行聚类，为图片“打上”标签。与一般方法不同的是，CACTUs 会对 embeddings 进行多次放缩 + 聚类，生成多个不同的划分。从无标签原始数据中生成 Task 的算法如下：</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/CACTUs.jpg" width="90%" height="90%"></div></p>
+<p>有了带标签（fake）的 Task 之后，就可以套用常规的 Meta-Training 了。</p>
+<h5 id="emsp-5-2-概念空间元学习-DEML"><a href="#emsp-5-2-概念空间元学习-DEML" class="headerlink" title="&emsp; 5.2 概念空间元学习 DEML"></a>&emsp; 5.2 概念空间元学习 DEML</h5><p><a href="https://arxiv.org/abs/1802.03596" target="_blank" rel="noopener">DEML</a> 全写作 Deep Meta-Learning ，之所以又叫做概念空间元学习，是看到原论文题目中，就提到了 Concept Space 。 它没有牵涉到复杂的数学原理，只是在 Meta-learner 之外引入了一个 Conception Generator 和一个 Conception Discriminator，前者负责抽取 embedding，可以是任意的卷积神经网络，后者负责将 embedding 映射到 label （模型在训练阶段见过的类型），可以是任意的机器学习模型。在Meta-Training期间，三者端到端地训练，在Adaption时，只有Meta-learner的参数在更新，其余部分保持不变。论文最后使用的网络结构如下所示：</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/DEML.jpg" width="50%" height="50%"></div></p>
+<p>其实，看到这个结构以后，怎么训练也就很明了了，理论上，它可以和任意的元学习优化算法结合起来。<br>我推测这篇论文的出发点不外乎是：</p>
+<ol>
+<li>既然已经有研究用预训练网络抽取图像特征作为 Meta-Learner 的输入，那索性就把这个extractor 拉来和 Meta-Learner 一起训练。</li>
+<li>Adaption 时来的新类，之前在 Meta-Training 时很可能是见过的。不妨把这部分分类能力保留下来。</li>
+</ol>
+<h5 id="emsp-5-3-任务未知元学习-TAML"><a href="#emsp-5-3-任务未知元学习-TAML" class="headerlink" title="&emsp; 5.3 任务未知元学习 TAML"></a>&emsp; 5.3 任务未知元学习 TAML</h5><p><a href="https://arxiv.org/abs/1805.07722" target="_blank" rel="noopener">TAML</a> 中的 TA 是指 Task - Agnostic，即任务未知，这个词之前也是出现过的，但这篇论文给出了更广义的解释：首先，分类任务的类别数是未知的，所以，在 Meta-Training 的过程中，要使用尽量多的类别分支。（这个解释算其实还不算Open？这里还有可以做的工作，我们在后面讨论。）其次，作者认为，为了保持Meta-Learner的均衡性，在 Meta-Training 过程中，模型不能当真“学会”某一个任务，即对任意训练 Task 任务，元学习器的类别输出应当模糊。作者引入熵的概念来衡量输出的模糊程度，并实践了数种熵计算方式。算法如下：</p>
+<p><div align="center"><img src="/2019/04/25/MetaLearning-Post/TAML.jpg" width="90%" height="90%"></div></p>
+<p>不难看出，它是在更新参数时加了一部分Loss，促使参数更新前，模型输出无偏向，而参数更新后，偏向要尽量大。</p>
+<hr>
+<h3 id="6-相关问题探讨与Idea"><a href="#6-相关问题探讨与Idea" class="headerlink" title="6 相关问题探讨与Idea"></a>6 相关问题探讨与Idea</h3><h5 id="emsp-用元学习解决图像分类是否有必要？"><a href="#emsp-用元学习解决图像分类是否有必要？" class="headerlink" title="&emsp; * 用元学习解决图像分类是否有必要？"></a>&emsp; * 用元学习解决图像分类是否有必要？</h5><p>如同前面介绍 PN 和 PMN 是所提到的，图像分类的 Few Shot 问题，有两种解决途径，一种是元学习的，一种是表示学习的。二者在数据需求和时间成本上其实相差无几，但后者还是有明显的优势，首先，深度extractor + 机器学习分类模型的方案目前已经达到了一个比较高的Score，其次，也是最重要的，这样的方案可以做到 Unforget，即动态扩充类别库。（关于这种方法，除了<a href="https://arxiv.org/abs/1606.04080" target="_blank" rel="noopener">Matching Network</a>，我们再给出两篇参考：<a href="https://arxiv.org/abs/1804.09458" target="_blank" rel="noopener">Without Forgetting</a>，<a href="https://arxiv.org/abs/1706.00326" target="_blank" rel="noopener">基于概率模型</a>）所以，对于元学习来说，图像分类是一个比较好的实验用例，却不是一个好的实际应用场景。<br>表示学习在 Few Shot 领域的应用，特别是图像 Few Shot， 远比元学习要广泛。已经有了基于此原理的 Detection 和 Segementation 的工作了（<a href="https://arxiv.org/abs/1903.00621" target="_blank" rel="noopener">Anchor-Free</a>，<a href="https://arxiv.org/abs/1806.04728" target="_blank" rel="noopener">RepMet</a>，<a href="https://arxiv.org/abs/1903.02351?context=cs.CV" target="_blank" rel="noopener">CANet</a>）。表示学习是我给它们的概括，很多文章里称此类方法是 Metric Learning 的方法。</p>
+<h5 id="emsp-Few-shot-与-Meta-Learning"><a href="#emsp-Few-shot-与-Meta-Learning" class="headerlink" title="&emsp; * Few-shot 与 Meta-Learning"></a>&emsp; * Few-shot 与 Meta-Learning</h5><p>参照上一条，Few Shot 和 Meta-Learning 之间的线索也就不言自明，Meta-Learning 只是 Few Shot的解决方案之一。就目前看来，除了机器人示教的 imatation learning 比较依赖元学习之外，剩下的任务都有其他的甚至更实用的方案。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -200,16 +296,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/25/MetaLearning-Post/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/25/MetaLearning-Post/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -224,84 +379,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/25/hello-world/" class="archive-article-date">
-  	<time datetime="2019-04-25T09:43:24.926Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/25/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Meta-Learning-概述"><span class="toc-number">1.</span> <span class="toc-text">1 Meta-Learning 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-1-1-Meta-Learning-定义"><span class="toc-number">1.0.1.</span> <span class="toc-text">  1.1 Meta-Learning 定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-1-2-Meta-Learning-Pipeline"><span class="toc-number">1.0.2.</span> <span class="toc-text">  1.2 Meta-Learning Pipeline</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-1-3-Meta-Learning-符号定义"><span class="toc-number">1.0.3.</span> <span class="toc-text">  1.3 Meta-Learning 符号定义</span></a></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Meta-Learning-的经典用例"><span class="toc-number">2.</span> <span class="toc-text">2 Meta-Learning 的经典用例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-2-1-回归与二分类"><span class="toc-number">2.0.1.</span> <span class="toc-text">  2.1 回归与二分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-2-2-图像分类"><span class="toc-number">2.0.2.</span> <span class="toc-text">  2.2 图像分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-2-3-强化学习"><span class="toc-number">2.0.3.</span> <span class="toc-text">  2.3 强化学习</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Meat-Learning-优化器"><span class="toc-number">3.</span> <span class="toc-text">3 Meat-Learning 优化器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-3-1-界定：元学习优化器"><span class="toc-number">3.0.1.</span> <span class="toc-text">  3.1 界定：元学习优化器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-3-2-MAML"><span class="toc-number">3.0.2.</span> <span class="toc-text">  3.2 MAML</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-3-3-Meta-SGD"><span class="toc-number">3.0.3.</span> <span class="toc-text">  3.3 Meta-SGD</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-3-4-ADML"><span class="toc-number">3.0.4.</span> <span class="toc-text">  3.4 ADML</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-3-5-Gradient-Agreement"><span class="toc-number">3.0.5.</span> <span class="toc-text">  3.5 Gradient Agreement</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-3-6-其他"><span class="toc-number">3.0.6.</span> <span class="toc-text">  3.6 其他</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-图像分类元学习的经典研究"><span class="toc-number">4.</span> <span class="toc-text">4 图像分类元学习的经典研究</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-4-1-Prototypical-Netork"><span class="toc-number">4.0.1.</span> <span class="toc-text">  4.1 Prototypical Netork</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-4-2-PMN"><span class="toc-number">4.0.2.</span> <span class="toc-text">  4.2 PMN</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Meta-Learning-前沿"><span class="toc-number">5.</span> <span class="toc-text">5 Meta-Learning 前沿</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-5-1-无监督元学习-CACTUs"><span class="toc-number">5.0.1.</span> <span class="toc-text">  5.1 无监督元学习 CACTUs</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-5-2-概念空间元学习-DEML"><span class="toc-number">5.0.2.</span> <span class="toc-text">  5.2 概念空间元学习 DEML</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-5-3-任务未知元学习-TAML"><span class="toc-number">5.0.3.</span> <span class="toc-text">  5.3 任务未知元学习 TAML</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-相关问题探讨与Idea"><span class="toc-number">6.</span> <span class="toc-text">6 相关问题探讨与Idea</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-用元学习解决图像分类是否有必要？"><span class="toc-number">6.0.1.</span> <span class="toc-text">  * 用元学习解决图像分类是否有必要？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emsp-Few-shot-与-Meta-Learning"><span class="toc-number">6.0.2.</span> <span class="toc-text">  * Few-shot 与 Meta-Learning</span></a></li></ol></li>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
+  
+  
+  
 
   
+
+  
+
   
 
 
@@ -324,8 +427,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
