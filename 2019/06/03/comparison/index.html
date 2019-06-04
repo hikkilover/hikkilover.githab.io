@@ -6,18 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hikkilover&#39;s Blog</title>
+  <title>A Comparison of Transfer Learning, Meta Learning, Zero-Shot, Knowledge Distillation and Finetune | Hikkilover&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="A Blog Built on Hexo">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hikkilover&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="1 简介这篇文章中我们将对迁移学习(Transfer Learning, TL)，元学习(Meta Learning, ML)，知识蒸馏(Knowledge Distillation, KD)，零样本学习(Zero-Shot Learning, ZS)以及模型微调(Finetune, FT)等几个研究方向进行比较。">
+<meta name="keywords" content="Transfer Learning,Meta Learning,Zero-Shot,Finetune,Knowledge Distillation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Comparison of Transfer Learning, Meta Learning, Zero-Shot, Knowledge Distillation and Finetune">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/comparison/index.html">
 <meta property="og:site_name" content="Hikkilover&#39;s Blog">
-<meta property="og:description" content="A Blog Built on Hexo">
+<meta property="og:description" content="1 简介这篇文章中我们将对迁移学习(Transfer Learning, TL)，元学习(Meta Learning, ML)，知识蒸馏(Knowledge Distillation, KD)，零样本学习(Zero-Shot Learning, ZS)以及模型微调(Finetune, FT)等几个研究方向进行比较。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/comparison/figure1.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/comparison/figure2.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/comparison/figure3.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/comparison/figure5.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/comparison/figure4.png">
+<meta property="og:updated_time" content="2019-06-04T00:57:52.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hikkilover&#39;s Blog">
-<meta name="twitter:description" content="A Blog Built on Hexo">
+<meta name="twitter:title" content="A Comparison of Transfer Learning, Meta Learning, Zero-Shot, Knowledge Distillation and Finetune">
+<meta name="twitter:description" content="1 简介这篇文章中我们将对迁移学习(Transfer Learning, TL)，元学习(Meta Learning, ML)，知识蒸馏(Knowledge Distillation, KD)，零样本学习(Zero-Shot Learning, ZS)以及模型微调(Finetune, FT)等几个研究方向进行比较。">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/03/comparison/figure1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hikkilover&#39;s Blog" type="application/atom+xml">
   
@@ -141,36 +149,82 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-comparison" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/03/comparison/" class="archive-article-date">
-  	<time datetime="2019-06-03T07:31:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/03/comparison/">A Comparison of Transfer Learning, Meta Learning, Zero-Shot, Knowledge Distillation and Finetune</a>
+    <h1 class="article-title" itemprop="name">
+      A Comparison of Transfer Learning, Meta Learning, Zero-Shot, Knowledge Distillation and Finetune
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/06/03/comparison/" class="archive-article-date">
+  	<time datetime="2019-06-03T07:31:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h3><p>这篇文章中我们将对迁移学习(Transfer Learning, TL)，元学习(Meta Learning, ML)，知识蒸馏(Knowledge Distillation, KD)，零样本学习(Zero-Shot Learning, ZS)以及模型微调(Finetune, FT)等几个研究方向进行比较。</p>
+<p> <div align="center"><img src="/2019/06/03/comparison/figure1.png" width="70%" height="70%"></div></p>
+<a id="more"></a>
+<p>上图中各部分的大小多少对应着每个方向的重要程度以及研究规模。目前，TL和ZS受到的关注比较多，研究也相对深入；而在ML和KD中，许多研究还只是Demo式的；最后的FT，将它算作单独的研究方向比较勉强，因为微调一直都只是作为一项实用的Method为人所用，纯粹围绕FT展开的工作很少。</p>
+<p>这里附上一些参考链接, 供读者了解这些概念：</p>
+<p><a href="https://arxiv.org/abs/1808.01974?context=stat.ML" target="_blank" rel="noopener">Transfer Learning 综述论文 in 2018</a></p>
+<p>[Meta Learning 简介 Blog] (见本博客博文)</p>
+<p><a href="https://blog.csdn.net/nature553863/article/details/80568658" target="_blank" rel="noopener">Knowledge Distillation 简介 Blog from CSDN</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/34656727?spm=5176.9876270.0.0.399ce44aXsg7cN" target="_blank" rel="noopener">Zero-Shot 简介 Blog from zhihu</a></p>
+<hr>
+<h3 id="2-目标与局限"><a href="#2-目标与局限" class="headerlink" title="2 目标与局限"></a>2 目标与局限</h3><p>这些技术应对的问题不同，应用的原理不同，各自的局限也不一致。<br> <div align="center"><img src="/2019/06/03/comparison/figure2.png" width="80%" height="80%"></div></p>
+<h5 id="迁移学习"><a href="#迁移学习" class="headerlink" title="迁移学习"></a>迁移学习</h5><p>迁移学习的核心是实现跨任务模型重用。设A是一个语意分割模型，我们认为，固化在A中的先验信息对其他Pixel-level的任务也很有价值，那么就不妨将A迁移到深度估计任务。由于先验信息的存在，迁移训练所需的数据量一般是低于从头训练的。迁移不只是一对一的，也可以是多对一的，即多个相关任务的预训练模型都为“我”所用。<a href="https://arxiv.org/abs/1804.08328" target="_blank" rel="noopener">CVPR2018 最佳论文 Taskonomy</a> 就描述了一套非常漂亮的多对一迁移源任务选择策略。</p>
+<p>迁移学习相关的研究太多也太广，很难归结出什么固有的局限性。</p>
+<h5 id="元学习"><a href="#元学习" class="headerlink" title="元学习"></a>元学习</h5><p>元学习是为 Few-Shot 而生的一种方法，若不存在数据量上的严格限制，也就没必要采用元学习。以元学习图像分类为例，一般的验证实验都是做 1-shot 或 5-shot (per category)，如此少量的数据，几乎也就限定了性能上限，毕竟这点样本连描述这个目标域的分布都捉襟见肘，操作者也很难在上面“动手脚”。</p>
+<p>元学习的实施过程分为两个部分：首先是 Meta-Training，其次是 Adaption。最好的情况是两个阶段所用的数据来源于同一个域，比如都是做狗的分类，只是 Adaption 的品种范围和 Meta-Training 不重合。这时我们可以认为元学习算法获得了理想效果。反之，若数据不是来源于同一个域，比如 Meta-Training 时用狗的数据，而 Adaption 时却是鸟，这时就会有一些性能损失。</p>
+<h5 id="知识蒸馏"><a href="#知识蒸馏" class="headerlink" title="知识蒸馏"></a>知识蒸馏</h5><p>知识蒸馏的核心目标一直都比较模糊，在 <a href="https://arxiv.org/abs/1503.02531" target="_blank" rel="noopener">Hinton 首次提出 KD</a> 这个概念时，只是简单地提及 KD Methods 一方面可以实现模型体积的压缩，另一方面也可以融合多个不同的模型。现在看来，第二点的意义更为重大。因为只有单个 Teacher Model 时，Student Model 不存在其他的信息来源，其性能几乎不可能超过 Teacher Model，而有多个TM做参考，且这些TM的任务或适用域各有不同时，SM则可借融合之便，在性能上有所突破，这一点，在 <a href="https://arxiv.org/abs/1904.10167v1" target="_blank" rel="noopener">许多研究</a> 中也被证实。</p>
+<h5 id="零样本学习"><a href="#零样本学习" class="headerlink" title="零样本学习"></a>零样本学习</h5><p>对零样本学习这个领域了解有限，但对其方法有一个大概的轮廓。Zero-Shot 之所以能实现，很大程度上是借助了表示学习的思路。为所有样本对象做细致的属性标定，(这时不妨将样本视为其属性的集合)。那么在应对一个新的对象类时，就无须真实的样本，只需有对象的属性标签，模型就能把握到新对象类的特征。当然细致的标定属性是需要设计的，也有成本。</p>
+<h5 id="Finetune"><a href="#Finetune" class="headerlink" title="Finetune"></a>Finetune</h5><p>关于Finetune，更常见的说法是重训改变了训练样本的分布，使模型在特定的目标域中有更好的表现（实际上是对特定域的过拟合）。这种改变的跨度是受限的，例如你可以在通用人脸识别模型上Finetune亚洲人脸数据，但不太可能在场景识别模型上Finetune人脸数据。</p>
+<p>这些方法的任务不同，目标不同，但几乎都与 “迁移” 这个概念息息相关。</p>
+<p> <div align="center"><img src="/2019/06/03/comparison/figure3.png" width="70%" height="70%"></div></p>
+<p> 如TF就是在Task的维度做迁移，而ZS和FT都是在对象域（适用域）的维度做迁移。KD更不必说，可以在两个维度上做模型的综合。唯一例外的是ML，它本身并不带有任何迁移的概念，但如前述，ML一直为目标域迁移带来的性能损失所累。所以，如何从已有的迁移方法中汲取营养改善ML，也是一个值得思考的问题。</p>
+<hr>
+<h3 id="3-应用特点"><a href="#3-应用特点" class="headerlink" title="3 应用特点"></a>3 应用特点</h3><p>本节，我们从应用成本的角度分析各类方法的应用特点。成本分为两个方面，一是数据需求，二是训练耗时。这里我们设标准的从头训练过程所需的数据和时间为100%。下图中会给出各类方法的相对成本。</p>
+<p> <div align="center"><img src="/2019/06/03/comparison/figure5.png" width="70%" height="70%"></div></p>
+<p>  <div align="center"><img src="/2019/06/03/comparison/figure4.png" width="70%" height="70%"></div></p>
+<p>给出的并非精确的统计数字，而是按照一般方法做的简单估计。虽然做不到精准地描述，但说明特点也绰绰有余。</p>
+<p>在这两类成本中，数据需求显然是更为主要的。ML和ZS自不必说，它们的目标就是小样本或无样本启动。TL和FT一般只需要较少的数据，当然，实际应用时，数据总是不嫌多的。最后，KD对数据量的要求似乎超出了想象，但如果了解KD的基本原理也就不难理解，一般的KD Method都是把模型当做一个映射对待，用真实的数据“试探”映射的情况，所以数据当然是愈多愈好。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -198,92 +252,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/03/comparison/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/25/MetaLearning-Post/" class="archive-article-date">
-  	<time datetime="2019-04-25T10:34:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/25/MetaLearning-Post/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Meta-Learning Post</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/25/MetaLearning-Post/">Meta-Learning Post</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Meta Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Survey</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-简介"><span class="toc-number">1.</span> <span class="toc-text">1 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-目标与局限"><span class="toc-number">2.</span> <span class="toc-text">2 目标与局限</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#迁移学习"><span class="toc-number">2.0.1.</span> <span class="toc-text">迁移学习</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#元学习"><span class="toc-number">2.0.2.</span> <span class="toc-text">元学习</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#知识蒸馏"><span class="toc-number">2.0.3.</span> <span class="toc-text">知识蒸馏</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#零样本学习"><span class="toc-number">2.0.4.</span> <span class="toc-text">零样本学习</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Finetune"><span class="toc-number">2.0.5.</span> <span class="toc-text">Finetune</span></a></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#3-应用特点"><span class="toc-number">3.</span> <span class="toc-text">3 应用特点</span></a></li>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/25/hello-world/" class="archive-article-date">
-  	<time datetime="2019-04-25T09:43:24.926Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/25/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -306,8 +387,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
